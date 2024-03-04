@@ -9,7 +9,7 @@ class SearchForm(forms.Form):
 class SignUpForm(UserCreationForm):
     class Meta:
         model = CustomUser
-        fields = ['first_name', 'last_name', 'email', 'username', 'password1', 'password2', 'account_type']
+        fields = ['first_name', 'last_name', 'email', 'username', 'password1', 'password2',  'account_type']
  
 class LoginForm(forms.ModelForm):
     class Meta:

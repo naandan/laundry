@@ -12,7 +12,8 @@ class CustomUser(AbstractUser):
         ('pimpinan', 'Pimpinan'),
     )
     account_type = models.CharField(max_length=20, choices=ACCOUNT_TYPE_CHOICES)
-
+    def __str__(self):
+        return str(self.username)
 
 
 class Transaksi(models.Model):
