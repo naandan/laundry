@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CleanWash Laundry</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+        <a class="navbar-brand" href="">
+            <img src="{% static 'images/logo.png' %}" style="max-width: 100px; max-height: 100px;" />
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link login-link" href="/login">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Header -->
+<header class="jumbotron jumbotron-fluid text-center text-black">
+    <div class="container">
+        <h1 class="display-4">Selamat Datang Di Web Laundry</h1>
+        <p class="lead">We provide top-notch laundry services with a focus on quality and customer satisfaction.</p>
+        <a href="/search" class="btn btn-primary btn-lg">Cari History</a>
+    </div>
+</header>
+
+<!-- About Us -->
+<section id="about" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">About Us</h2>
+        <p class="text-center">CleanWash Laundry has been serving the community since 2024. We pride ourselves on providing exceptional laundry services at affordable prices.</p>
+    </div>
+</section>
+
+<!-- Services -->
+<section id="services" class="py-5 bg-black">
+    <div class="container">
+        <h2 class="text-center mb-4">Jenis Layanan</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Hemat</h4>
+                        <p class="card-text">We offer professional washing services using high-quality detergents and equipment.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Normal</h4>
+                        <p class="card-text">Our drying services ensure your clothes are dried thoroughly and ready to wear.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Expres</h4>
+                        <p class="card-text">We provide professional folding services to make your laundry neat and organized.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-4 bg-dark text-white">
+    <div class="container text-center">
+        <p>&copy; 2024 CleanWash Laundry. All Rights Reserved.</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

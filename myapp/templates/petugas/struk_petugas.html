@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Struk Transaksi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        hr {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border: 0;
+            border-top: 1px solid #eee;
+        }
+        .btn-print {
+            display: block;
+            width: 100px;
+            margin: 20px auto;
+            padding: 10px;
+            text-align: center;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn-print:hover {
+            background-color: #0056b3;
+        }
+        .btn-selesai {
+            display: block;
+            width: 100px;
+            margin: 20px auto;
+            padding: 10px;
+            text-align: center;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn-selesai:hover {
+            background-color: #218838;
+        }
+        @media print {
+            .btn-print,
+            .btn-selesai {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <h1>Struk Transaksi</h1>
+        <hr>
+        <h2>Detail Transaksi:</h2>
+        <p><strong>ID:</strong> {{ transaksi.id }}</p>
+        <p><strong>Nama:</strong> {{ transaksi.nama }}</p>
+        <p><strong>Alamat:</strong> {{ transaksi.alamat }}</p>
+        <p><strong>No HP:</strong> {{ transaksi.nohp }}</p>
+        <p><strong>Per Kilo:</strong>{{ transaksi.perkilo }}</p>
+        <p><strong>Harga Total:</strong> Rp{{ transaksi.harga }}</p>
+        <p><strong>Jenis Layanan:</strong> {{ transaksi.get_jenis_layanan_display }}</p>
+        <p><strong>Pembayaran:</strong> {{ transaksi.get_pembayaran_display }}</p>
+        <p><strong>Tanggal:</strong> {{ transaksi.tanggal }}</p>
+        <p><strong>Status:</strong> {{ transaksi.get_status_display }}</p>
+        <!-- Anda dapat menambahkan detail transaksi lainnya sesuai kebutuhan -->
+        <button onclick="window.print()" class="btn-print">Print</button>
+        <a href="/petugas_transaksi_order" class="btn-selesai">Selesai</a>
+    </div>
+    
+</body>
+</html>

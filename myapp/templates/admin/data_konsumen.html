@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>administrator | Dashboard</title>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.1.0/css/adminlte.min.css">
+</head>
+<body class="hold-transition sidebar-mini">
+<!-- Site wrapper -->
+<div class="wrapper">
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+    </ul>
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="#" class="brand-link">
+      <span class="brand-text font-weight-light">administrator | Data Konsumen</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Dashboard -->
+          <li class="nav-item">
+            <a href="/administrator" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+          <!-- Data Konsumen -->
+          <li class="nav-item">
+            <a href="/data_konsumen" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
+              <p>Data Konsumen</p>
+            </a>
+          </li>
+          <!-- Data Petugas -->
+          <li class="nav-item">
+            <a href="/data_petugas" class="nav-link">
+              <i class="nav-icon fas fa-user-tie"></i>
+              <p>Data Petugas</p>
+            </a>
+          </li>
+          <!-- Jenis Layanan -->
+          <li class="nav-item">
+            <a href="/jenis_layanan" class="nav-link">
+              <i class="nav-icon fas fa-concierge-bell"></i>
+              <p>Jenis Layanan</p>
+            </a>
+          </li>
+          <!-- Transaksi Order -->
+          <li class="nav-item">
+            <a href="/transaksi_order" class="nav-link">
+              <i class="nav-icon fas fa-shopping-cart"></i>
+              <p>Transaksi Order</p>
+            </a>
+          </li>
+          <!-- History -->
+          <li class="nav-item">
+            <a href="/history" class="nav-link">
+              <i class="nav-icon fas fa-history"></i>
+              <p>History</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/laporan" class="nav-link">
+                <i class="fas fa-file-alt"></i>
+                <p>laporan</p>
+            </a>
+        </li>
+          <li class="nav-item">
+            <a href="/logout" class="nav-link">
+              <i class="fas fa-sign-out-alt"></i>
+              <p>logout</p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Data Konsumen</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <!-- TABLE: List of Customers -->
+            <div class="card">
+              <div class="card-header">
+                <a href="{% url 'tambah_transaksi' %}" class="btn btn-success">Tambah</a>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table class="table table-bordered table-striped">
+                  <thead>
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nama</th>
+                        <th scope="col">Alamat</th>
+                        <th scope="col">No HP</th>
+                        <th scope="col">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for transaksi in transaksi %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ transaksi.id }}</td>
+                            <td>{{ transaksi.nama }}</td>
+                            <td>{{ transaksi.alamat }}</td>
+                            <td>{{ transaksi.nohp }}</td>
+                            <td>
+                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#EditModal{{ transaksi.id }}">ubah</button>
+                                 <!-- Delete Modals -->
+                                 <div class="modal fade" id="EditModal{{ transaksi.id }}" tabindex="-1" role="dialog" aria-labelledby="EditModal1Label" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="EditModal1Label">edit Data</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Apakah Anda yakin ingin mengubah data ini?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <form action="{% url 'ubah_transaksi' transaksi.id %}">
+                                                <button type="reset" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                                <button type="submit" class="btn btn-danger">ubah</button>
+                                            </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal{{ transaksi.id }}">Hapus</button>
+                                <!-- Delete Modals -->
+                                <div class="modal fade" id="deleteModal{{ transaksi.id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModal1Label" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="deleteModal1Label">Hapus Data</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Apakah Anda yakin ingin menghapus data ini?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <form action="{% url 'hapus_transaksi' transaksi.id %}">
+                                                <button type="reset" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                                <button type="submit" class="btn btn-danger">Hapus</button>
+                                            </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    <!-- Add more rows as needed -->
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Main Footer -->
+  <footer class="main-footer">
+    <!-- To the right -->
+    <div class="float-right d-none d-sm-inline">
+      Anything you want
+    </div>
+    <!-- Default to the left -->
+    <strong>AdminLTE 3.</strong> All rights
+    reserved.
+  </footer>
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED SCRIPTS -->
+
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.1.0/js/adminlte.min.js"></script>
+</body>
+</html>

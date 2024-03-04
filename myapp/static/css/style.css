@@ -1,0 +1,72 @@
+/* Navbar */
+.navbar {
+  background-color: #343a40; /* Warna latar belakang navbar */
+}
+
+.navbar-brand img {
+  max-height: 40px; /* Tinggi maksimum logo navbar */
+}
+
+.navbar-nav .nav-link {
+  color: #fff; /* Warna teks tautan navbar */
+  font-weight: bold;
+  padding: 8px 15px;
+  transition: color 0.3s ease; /* Animasi perubahan warna saat hover */
+}
+
+.navbar-nav .nav-link:hover {
+  color: #007bff; /* Warna teks tautan navbar saat dihover */
+}
+
+/* Main Content */
+.container {
+  margin-top: 20px;
+}
+
+h1 {
+  font-size: 3em;
+  color: #343a40; /* Warna judul */
+}
+
+p {
+  font-size: 1.2em;
+  color: #555; /* Warna teks konten */
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: #fff; /* Warna teks tombol */
+  padding: 10px 20px;
+  font-size: 1.1em;
+  transition: background-color 0.3s ease; /* Animasi perubahan warna saat hover */
+}
+
+.btn-primary:hover {
+  background-color: #0056b3; /* Warna tombol saat dihover */
+}
+
+/* Footer */
+.footer {
+  background-color: #f8f9fa; /* Warna latar belakang footer */
+  padding: 30px 0;
+  text-align: center;
+}
+
+.footer p {
+  margin-bottom: 0; /* Menghilangkan margin bawah untuk teks footer */
+  color: #555; /* Warna teks footer */
+}
+
+/* Background Image */
+.background-image {
+  background-image: url('../images/background.jpg'); /* URL gambar latar belakang */
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff; /* Warna teks konten di atas gambar */
+}

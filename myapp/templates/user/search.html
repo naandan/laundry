@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* CSS untuk tampilan kartu */
+        body, html {
+            height: 100%;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+        .card {
+            width: 500px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card-content {
+            padding: 30px;
+        }
+        .card-title {
+            font-size: 26px;
+            margin-bottom: 15px;
+        }
+        .card-info {
+            font-size: 20px;
+            color: #555;
+            margin-bottom: 15px;
+        }
+        .btn-back {
+            margin-top: 20px;
+        }
+        .logout-btn {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <div class="card-content">
+            <h2 class="card-title">masukan ID transaksi</h2>
+            <form method="GET" action="{% url 'search_view' %}">
+                <input type="text" name="search_query" placeholder="Search..." class="form-control mb-3">
+                <button type="submit" class="btn btn-primary btn-block">Search</button>
+            </form>
+        </div>
+    </div>
+    {% for result in search_results %}
+    <div class="card">
+        <div class="card-content">
+            <p class="card-info"><strong>Nama:</strong> {{ result.nama }}</p>
+            <p class="card-info"><strong>Alamat:</strong> {{ result.alamat }}</p>
+            <p class="card-info"><strong>No. HP:</strong> {{ result.nohp }}</p>
+            <p class="card-info"><strong>Jenis Layanan:</strong> {{ result.jenis_layanan }}</p>
+            <p class="card-info"><strong>Status Pembayaran:</strong> {{ result.pembayaran }}</p>
+            <p class="card-info"><strong>Tanggal Pemesanan:</strong> {{ result.tanggal }}</p>
+            <p class="card-info"><strong>Status layanan:</strong> {{ result.status }}</p>
+            <p class="card-info"><strong>Pengambilan:</strong> {{ result.selesai }}</p>
+            <center><a href="{% url 'halaman_user' %}" class="btn btn-info">kembali</a></center>
+        </div>
+    </div>
+    {% empty %}
+    <div class="card">
+        <div class="card-content">
+            <p class="card-info">No results found</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+</body>
+</html>
