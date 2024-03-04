@@ -13,14 +13,6 @@ class CustomUser(AbstractUser):
     )
     account_type = models.CharField(max_length=20, choices=ACCOUNT_TYPE_CHOICES)
 
-    # def save(self, *args, **kwargs):
-    #     if self.pk:
-    #         if hasattr(self, '_password') and self.password != self._password:
-    #             self.password = make_password(self.password)
-    #     else:
-    #         self.password = make_password(self.password)
-    #     super().save(*args, **kwargs)
-
 
 
 class Transaksi(models.Model):
